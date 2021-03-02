@@ -3,9 +3,12 @@ import styles from "./navbar.module.css";
 
 const navbar = (props) => (
     <div className={styles.Navbar}>
-        <div className={styles.title}>BioVisualSpeech</div>
+        <h3 className={styles.title}>BioVisualSpeech</h3>
         <div className={styles.pages}>
-            <a href="#">Login</a>
+            <button className={[styles.navButton, styles.active].join(" ")} active>
+                Login
+            </button>
+            <button className={styles.navButton}>Game</button>
         </div>
     </div>
 );

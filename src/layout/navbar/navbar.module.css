@@ -13,14 +13,23 @@
     color: white;
 }
 
-.pages {
-    padding: 0 2rem 0 0;
+.navButton {
     color: white;
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 100;
+    border: none;
+    margin-left: 10px;
 }
 
-.pages:visited,
-.pages:link,
-.pages:active,
-.pages:hover {
-    color: white;
+.navButton:focus,
+.navButton:hover,
+.active {
+    outline: none;
+    transform: translateY(-2px);
+    border-bottom: 2px solid white;
+}
+
+.pages {
+    padding-right: 2rem;
 }
