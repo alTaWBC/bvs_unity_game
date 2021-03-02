@@ -1,0 +1,26 @@
+.Navbar {
+    background-color: rgb(40, 40, 40);
+    height: 50px;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100vw;
+}
+
+.title {
+    padding: 0 0 0 2rem;
+    color: white;
+}
+
+.pages {
+    padding: 0 2rem 0 0;
+    color: white;
+}
+
+.pages:visited,
+.pages:link,
+.pages:active,
+.pages:hover {
+    color: white;
+}
