@@ -1,0 +1,8 @@
+.Checkbox {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 40%;
+    min-width: 200px;
+    margin-bottom: 10px;
+}

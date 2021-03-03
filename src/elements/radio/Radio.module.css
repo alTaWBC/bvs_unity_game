@@ -1,0 +1,19 @@
+.Radio {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 40%;
+    border-top: 1px solid #282c34;
+}
+
+.Radio p {
+    margin-top: 5px;
+    flex-basis: 100%;
+    text-align: start;
+    align-self: flex-start;
+}
+
+.option {
+    display: inline-block;
+}

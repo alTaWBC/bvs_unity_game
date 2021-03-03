@@ -1,5 +1,21 @@
 import React, { Component } from "react";
 import styles from "./Form.module.css";
+import TextInput from "../../elements/text_input/TextInput";
+import Checkbox from "../../elements/checkbox/Checkbox";
+import Radio from "../../elements/radio/Radio";
+
+const radioOptions = [
+    {
+        name: "Feminino",
+        value: "female",
+        id: "female",
+    },
+    {
+        name: "Masculino",
+        value: "male",
+        id: "male",
+    },
+];
 
 class Form extends Component {
     state = {
@@ -18,55 +34,25 @@ class Form extends Component {
     render() {
         return (
             <div className={styles.Form}>
-                <div className={styles.line}>
-                    <div className={styles.input}>
-                        <label htmlFor="idCrianca">Id da Criança</label>
-                        <input type="text" name="idCrianca" id="idCrianca" />
-                    </div>
-                    <div className={styles.input}>
-                        <label htmlFor="idCrianca">Idade da Criança</label>
-                        <input type="text" name="idCrianca" id="idCrianca" />
-                    </div>
-                </div>
-                <div className={styles.line}>
-                    <div className={styles.input}>
-                        <label htmlFor="idCrianca">Português é Língua Mãe?</label>
-                        <input
-                            type="checkbox"
-                            name=""
-                            id=""
-                            onClick={this.onClickEstrangeiro}
-                            checked={!this.state.estrangeiro}
-                        />
-                    </div>
-                    <div className={styles.input}>
-                        <label htmlFor="idCrianca">Desvios Na Fala</label>
-                        <input type="checkbox" name="" id="" onClick={this.onClickDesvios} checked={!this.state.des} />
-                    </div>
-                    <div className={[styles.input, styles.radio].join(" ")}>
-                        <label htmlFor="idCrianca">Género</label>
-                        <div className={styles.option}>
-                            <label htmlFor="idCrianca">Masculino</label>
-                            <input type="radio" name="gender" value="male" id="male" />
-                        </div>
-                        <div className={styles.option}>
-                            <label htmlFor="idCrianca">Feminino</label>
-                            <input type="radio" name="gender" value="female" id="female" />
-                        </div>
-                    </div>
-                </div>
-                {this.state.desvios ? (
-                    <div className={styles.input}>
-                        <label htmlFor="idCrianca">Desvios Na Fala</label>
-                        <input type="text" name="idCrianca" id="idCrianca" />
-                    </div>
-                ) : null}
-                {this.state.estrangeiro ? (
-                    <div className={styles.input}>
-                        <label htmlFor="idCrianca">Nacionalidade</label>
-                        <input type="text" name="idCrianca" id="idCrianca" />
-                    </div>
-                ) : null}
+                <h1>Formulário de Criança</h1>
+                <TextInput name="Id da Criança" id="IdCrianca" />
+                <TextInput name="Idade da Criança" id="IdadeCrianca" />
+                <Checkbox
+                    name="Português é Língua Mãe?"
+                    id="estrangeiro"
+                    checked={this.state.estrangeiro}
+                    onClick={this.onClickEstrangeiro}
+                />
+                <Checkbox
+                    name="Desvios na fala?"
+                    id="desvios"
+                    checked={this.state.desvios}
+                    onClick={this.onClickDesvios}
+                />
+                <Radio options={radioOptions} name="Gender" text="Género" />
+                {this.state.estrangeiro ? <TextInput name="Nacionalidade" id="Nacionalidade" /> : null}
+                {this.state.desvios ? <TextInput name="Desvios Na Fala" id="Desvios" /> : null}
+                <button>Enviar</button>
             </div>
         );
     }
