@@ -1,17 +1,18 @@
 .Form {
-    position: absolute;
+    /* position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 50%; */
+    /* transform: translate(-50%, -50%); */
     display: flex;
     width: 100%;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+    margin: 50px 0;
+    overflow: hidden;
 }
 
 .Form button {
-    width: 40%;
+    width: 100%;
     background-color: #282c34;
     border-radius: 5px;
     color: white;
@@ -27,5 +28,13 @@
 :focus {
     outline: none;
     box-shadow: 0 0 0 3px white, 0 0 0 5px #282c34;
+}
 
+.Box {
+    border: 1px solid #282c34;
+    width: 45%;
+    padding: 20px;
+    padding-bottom: 0px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 0.5px #282c34;
 }
