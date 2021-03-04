@@ -10,12 +10,13 @@ const PASSWORD_HASH = "biovisualspeech";
 class App extends Component {
     state = {
         page: "Login",
+        wrongPassword: false,
     };
 
     getPage = (page) => {
         switch (page) {
             case "Login":
-                return <Login login={this.login} />;
+                return <Login login={this.login} wrong={this.state.wrongPassword} />;
             case "Form":
                 return <Form />;
             case "Game":
@@ -30,8 +31,8 @@ class App extends Component {
 
     login = (password) => {
         const passwordHash = this.hashPassword(password);
-        if (passwordHash !== PASSWORD_HASH) return;
-        this.setState({ page: "Form" });
+        if (passwordHash !== PASSWORD_HASH) this.setState({ wrongPassword: true });
+        else this.setState({ page: "Form", wrongPassword: false });
     };
 
     changePage = (page) => {

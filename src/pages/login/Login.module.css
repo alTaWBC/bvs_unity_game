@@ -47,6 +47,20 @@
     margin: 10px 0;
 }
 
+.Form p {
+    color: red;
+    text-align: start;
+    display: none;
+}
+
+.Form.Wrong p {
+    display: block;
+}
+
+.Form.Wrong input{
+    border-color: red;
+}
+
 .Form button:hover {
     background-color: #0f1114;
 }
