@@ -9,7 +9,7 @@ const PASSWORD_HASH = "biovisualspeech";
 
 class App extends Component {
     state = {
-        page: "Login",
+        page: "Form",
         wrongPassword: false,
     };
 

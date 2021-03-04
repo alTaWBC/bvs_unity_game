@@ -24,15 +24,39 @@ class Form extends Component {
     state = {
         id: "",
         idade: "",
-        estrangeiro: true,
-        desvios: true,
+        estrangeiro: false,
+        desvios: false,
         genero: "",
         nacionalidade: "",
         descricaoDesvios: "",
+
+        validId: true,
+        validIdade: true,
+        validGender: true,
+        validNacionalidade: true,
+        validDesvios: true,
     };
 
     onChangeId = ({ target: { value: id } }) => {
         id.length > 6 || this.setState({ id });
+    };
+
+    clear = () => {
+        this.setState({
+            id: "",
+            idade: "",
+            estrangeiro: false,
+            desvios: false,
+            genero: "",
+            nacionalidade: "",
+            descricaoDesvios: "",
+
+            validId: true,
+            validIdade: true,
+            validGender: true,
+            validNacionalidade: true,
+            validDesvios: true,
+        });
     };
 
     onChangeIdade = ({ target: { value } }) => {
@@ -63,17 +87,28 @@ class Form extends Component {
         this.setState({ estrangeiro: !this.state.estrangeiro });
     };
 
-    onSubmit = () => {
-        const id = this.state.id.length === 6 ? this.state.id : false;
-        const idade = minimumAge <= this.state.idade <= maximumAge ? this.state.idade : false;
+    checkFieldValidity = () => {
+        const validId = this.state.id && this.state.id.length === 6;
+        const validIdade = this.state.idade && minimumAge <= this.state.idade <= maximumAge;
         const generos = radioOptions.map(({ value }) => value);
-        const genero = generos.includes(this.state.genero) ? this.state.genero : false;
+        const validGender = generos.includes(this.state.genero);
+        const validNacionalidade =
+            !this.state.estrangeiro || (this.state.nacionalidade && this.state.nacionalidade.length > 2);
+        const validDesvios =
+            !this.state.desvios || (this.state.descricaoDesvios && this.state.descricaoDesvios.length > 2);
+        this.setState({ validId, validIdade, validGender, validNacionalidade, validDesvios });
+        return [validId, validIdade, validGender, validNacionalidade, validDesvios].every((field) => field);
+    };
+
+    onSubmit = () => {
+        const formIsInvalid = !this.checkFieldValidity();
+        if (formIsInvalid) return;
+
+        const id = this.state.id;
+        const idade = this.state.idade;
+        const genero = this.state.genero;
         const nacionalidade = this.state.estrangeiro ? this.state.nacionalidade : "portuguesa";
         const descricaoDesvios = this.state.desvios ? this.state.descricaoDesvios : "";
-
-        const formIsInvalid = !(id && idade && genero);
-        console.log(formIsInvalid);
-        if (formIsInvalid) return;
 
         fetch("https://biovisualspeech.eu.pythonanywhere.com/newProfile/", {
             headers: {
@@ -85,7 +120,9 @@ class Form extends Component {
                 desvios: descricaoDesvios,
             },
             method: "Post",
-        }).then(console.log);
+        }).then((response) => {
+            this.clear();
+        });
     };
 
     render() {
@@ -93,7 +130,15 @@ class Form extends Component {
             <div className={styles.Form}>
                 <div className={styles.Box}>
                     <h1>Identificação do Voluntário</h1>
-                    <TextInput name="Identificador" id="IdCrianca" value={this.state.id} onChange={this.onChangeId} />
+                    <TextInput
+                        name="Identificador"
+                        wrong={!this.state.validId}
+                        id="IdCrianca"
+                        len={6}
+                        value={this.state.id}
+                        onChange={this.onChangeId}
+                        equal={true}
+                    />
                     <NumberInput
                         name="Idade"
                         id="IdadeCrianca"
@@ -101,6 +146,7 @@ class Form extends Component {
                         onChange={this.onChangeIdade}
                         min={minimumAge}
                         max={maximumAge}
+                        wrong={!this.state.validIdade}
                     />
                     <Checkbox
                         name="Português é Língua Mãe?"
@@ -118,17 +164,21 @@ class Form extends Component {
                     {this.state.estrangeiro ? (
                         <TextInput
                             name="Nacionalidade"
+                            wrong={!this.state.validNacionalidade}
                             id="Nacionalidade"
                             value={this.state.nacionalidade}
                             onChange={this.onChangeNacionalidade}
+                            len={2}
                         />
                     ) : null}
                     {this.state.desvios ? (
                         <TextInput
                             name="Desvios Na Fala"
+                            wrong={!this.state.validDesvios}
                             id="Desvios"
                             value={this.state.descricaoDesvios}
                             onChange={this.onChangeDesvios}
+                            len={2}
                         />
                     ) : null}
                     <button onClick={this.onSubmit}>Enviar</button>

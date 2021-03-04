@@ -17,3 +17,12 @@
     border-radius: 5px;
     border: 1px solid #222;
 }
+
+.TextInput p {
+    color: red;
+    display: none;
+}
+
+.TextInput.Wrong p {
+    display: block;
+}

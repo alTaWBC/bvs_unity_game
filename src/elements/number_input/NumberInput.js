@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./NumberInput.module.css";
 
 const NumberInput = (props) => {
+    const inputClasses = [styles.NumberInput];
+    props.wrong && inputClasses.push(styles.Wrong);
+
     return (
-        <div className={styles.NumberInput}>
+        <div className={inputClasses.join(" ")}>
             <label htmlFor={props.id}>{props.name}</label>
             <input
                 type="number"
@@ -14,6 +17,9 @@ const NumberInput = (props) => {
                 value={props.value}
                 onChange={props.onChange}
             />
+            <p>
+                {props.name} têm de estar entre os {props.min} e os {props.max}
+            </p>
         </div>
     );
 };
