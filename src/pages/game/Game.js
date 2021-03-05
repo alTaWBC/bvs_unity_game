@@ -33,7 +33,6 @@ class Game extends Component {
             width = window.innerWidth;
             height = width / aspectRatio;
         }
-        console.log(window.innerWidth);
         return { height: `${height}px`, width: `${width}px` };
     };
 
@@ -41,9 +40,10 @@ class Game extends Component {
         const sizes = this.getSize();
         window.addEventListener("resize", () => {
             const sizes = this.getSize();
-            const game = document.querySelector("#Game").style;
-            game.height = sizes.height;
-            game.width = sizes.width;
+            const game = document.querySelector("#Game");
+            if (!game) return;
+            game.style.height = sizes.height;
+            game.style.width = sizes.width;
         });
         return (
             <div style={sizes} className={styles.Unity} id="Game">

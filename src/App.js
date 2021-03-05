@@ -40,10 +40,14 @@ class App extends Component {
     };
 
     changePage = (page) => {
-        if (page === "Logout") this.logout();
+        if (page === "Logout") {
+            this.logout();
+            page = this.state.page;
+        }
 
         const unauthorizedPage = loggedInPages.includes(this.state.page);
         const loggedOut = !this.state.loggedIn;
+
         if (loggedOut && unauthorizedPage) page = "Login";
 
         this.setState({ page });
