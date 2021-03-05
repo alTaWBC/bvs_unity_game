@@ -3,14 +3,18 @@ import Navbar from "./layout/navbar/navbar";
 import Footer from "./layout/footer/footer";
 import Login from "./pages/login/Login";
 import Form from "./pages/form/Form";
+import Game from "./pages/game/Game";
 import { Component } from "react";
 
 const PASSWORD_HASH = "biovisualspeech";
+const loggedOutPages = ["Game"];
+const loggedInPages = ["Form"];
 
 class App extends Component {
     state = {
-        page: "Form",
+        page: "Game",
         wrongPassword: false,
+        loggedIn: false,
     };
 
     getPage = (page) => {
@@ -21,7 +25,7 @@ class App extends Component {
                 return <Form />;
             case "Game":
             default:
-                return <div></div>;
+                return <Game />;
         }
     };
 
@@ -32,18 +36,35 @@ class App extends Component {
     login = (password) => {
         const passwordHash = this.hashPassword(password);
         if (passwordHash !== PASSWORD_HASH) this.setState({ wrongPassword: true });
-        else this.setState({ page: "Form", wrongPassword: false });
+        else this.setState({ page: "Form", wrongPassword: false, loggedIn: true });
     };
 
     changePage = (page) => {
+        if (page === "Logout") this.logout();
+
+        const unauthorizedPage = loggedInPages.includes(this.state.page);
+        const loggedOut = !this.state.loggedIn;
+        if (loggedOut && unauthorizedPage) page = "Login";
+
         this.setState({ page });
+    };
+
+    logout = () => {
+        this.setState({ loggedIn: false });
     };
 
     render() {
         const page = this.getPage(this.state.page);
         return (
             <div className={styles.App}>
-                <Navbar />
+                <Navbar
+                    logged={this.state.loggedIn}
+                    page={this.state.page}
+                    logout={this.logout}
+                    loggedIn={loggedInPages}
+                    loggedOut={loggedOutPages}
+                    changePage={this.changePage}
+                />
                 {page}
                 <Footer />
             </div>
