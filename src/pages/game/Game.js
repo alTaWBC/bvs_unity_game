@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./Game.module.css";
 import Unity, { UnityContent } from "react-unity-webgl";
 import GameLabel from "../../elements/label/GameLabel";
+import AudioRecorder from "../../elements/recorder/AudioRecorder";
 
 const unityContent = new UnityContent("Build/webgl1/game.json", "Build/webgl1/UnityLoader.js");
 let interval = null;
@@ -51,6 +52,7 @@ class Game extends Component {
             <div style={sizes} className={styles.Unity} id="Game">
                 <Unity unityContent={unityContent} />
                 <GameLabel />
+                <AudioRecorder />
             </div>
         );
     }

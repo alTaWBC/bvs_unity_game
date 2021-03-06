@@ -60,7 +60,6 @@ class GameLabel extends Component {
                 onDoubleClick={this.onDoubleClick}
                 onMouseDown={this.mouseDown}
                 onMouseUp={this.mouseUp}
-                unselectable={true}
             >
                 {this.state.id}
             </div>
