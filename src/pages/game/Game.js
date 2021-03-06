@@ -43,20 +43,15 @@ class Game extends Component {
         this.setState({ label });
     };
 
-    progressGame = () => {
-        const productionWasCorrect = this.classifyProduction(true);
-        console.log(productionWasCorrect);
+    progressGame = (response) => {
+        const productionWasCorrect = this.classifyProduction(response);
         if (productionWasCorrect) unityContent.send("Character", "moveCharacter", "True");
     };
 
     classifyProduction = (message) => {
-        return message;
-        // const response = JSON.parse(message);
-        // if (parseInt(response["gameId"]) !== this.state.gameId) return;
-        // if (response["response"].toLowerCase() === "true") {
-        //     console.log("characterMoves");
-        //     unityContent.send("Character", "moveCharacter", "True");
-        // }
+        const { gameId = -1, response = "false" } = JSON.parse(message);
+        if (parseInt(gameId) !== this.state.gameId) return false;
+        return response.toLowerCase() === "true";
     };
 
     getSize = () => {
@@ -69,7 +64,6 @@ class Game extends Component {
         }
         return { height: `${height}px`, width: `${width}px` };
     };
-
 
     render() {
         const sizes = this.getSize();
@@ -85,12 +79,7 @@ class Game extends Component {
             <div style={sizes} className={styles.Unity} id="Game">
                 <Unity unityContent={unityContent} />
                 <GameLabel />
-                {this.state.label ? (
-                    <AudioRecorder
-                        canRecord={canRecord}
-                        progressGame={this.progressGame}
-                    />
-                ) : null}
+                {this.state.label ? <AudioRecorder canRecord={canRecord} progressGame={this.progressGame} /> : null}
             </div>
         );
     }

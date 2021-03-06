@@ -24,11 +24,21 @@ class AudioRecorder extends Component {
     };
 
     onStart = ({ data }) => {
-        this.props.progressGame();
+        const response = {
+            gameId: 1,
+            response: "true",
+        };
+
+        this.props.progressGame(JSON.stringify(response));
     };
 
     onStop = ({ data }) => {
-        this.props.progressGame();
+        const response = {
+            gameId: 1,
+            response: "true",
+        };
+
+        this.props.progressGame(JSON.stringify(response));
     };
 
     onClick = () => {
