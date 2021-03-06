@@ -12,27 +12,48 @@ class AudioRecorder extends Component {
         this.prepareMicrophone();
     }
 
+    componentWillUnmount() {
+        this.stop();
+    }
+
     prepareMicrophone = async () => {
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true, video: false });
-        const mediaRecorder = new MediaRecorder(stream);
-        mediaRecorder.addEventListener("dataavailable", this.onStart);
-        mediaRecorder.addEventListener("stop", this.onStop);
+        this.mediaRecorder = new MediaRecorder(stream);
+        this.mediaRecorder.addEventListener("dataavailable", this.onStart);
+        this.mediaRecorder.addEventListener("stop", this.onStop);
     };
 
     onStart = ({ data }) => {
-        console.log(data);
+        this.props.progressGame();
     };
 
     onStop = ({ data }) => {
-        console.log(data);
+        this.props.progressGame();
     };
 
     onClick = () => {
-        if (false) this.mediaRecorder.start(TIME_INTERVAL);
-        this.setState({ recording: !this.state.recording });
+        if (this.state.recording) this.stop();
+        else this.start();
+    };
+
+    start = () => {
+        this.mediaRecorder.start(TIME_INTERVAL);
+        this.setState({ recording: true });
+    };
+
+    stop = () => {
+        const microphoneIsNotRecording = this.mediaRecorder.state !== "recording";
+        if (microphoneIsNotRecording) return;
+
+        this.mediaRecorder.stop();
+        this.setState({ recording: false });
+        console.log("Stopped");
     };
 
     render() {
+        const cantRecord = !this.props.canRecord;
+        if (cantRecord) this.stop();
+
         const buttonClasses = [styles.AudioRecorder];
         if (this.state.recording) buttonClasses.push(styles.Recording);
 
