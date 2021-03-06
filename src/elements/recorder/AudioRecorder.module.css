@@ -14,13 +14,23 @@
     color: white;
 }
 
-.AudioRecorder:focus,
-.AudioRecorder:active,
 .AudioRecorder:hover {
     outline: none;
-    box-shadow: 0 0 0 3px white, 0 0 0 5px #282c34;
+    box-shadow: none;
+    background-color: #0c0c0c;
 }
 
 .Recording {
-    background-color: red;
+    background-color: rgb(253, 31, 31);
+}
+
+.Recording:hover {
+    outline: none;
+    box-shadow: none;
+    background-color: rgb(152, 21, 21);
+}
+
+.AudioRecorder:focus {
+    outline: none;
+    box-shadow: none;
 }
