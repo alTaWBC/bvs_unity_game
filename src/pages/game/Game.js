@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import styles from "./Game.module.css";
 import Unity, { UnityContent } from "react-unity-webgl";
+import GameLabel from "../../elements/label/GameLabel";
 
 const unityContent = new UnityContent("Build/webgl1/game.json", "Build/webgl1/UnityLoader.js");
 let interval = null;
 
 // TODO: Game Start and Game Over called several times
+const todo = null;
 
 class Game extends Component {
     componentDidMount() {
@@ -48,6 +50,7 @@ class Game extends Component {
         return (
             <div style={sizes} className={styles.Unity} id="Game">
                 <Unity unityContent={unityContent} />
+                <GameLabel />
             </div>
         );
     }

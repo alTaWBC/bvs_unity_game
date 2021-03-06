@@ -1,0 +1,14 @@
+.GameLabel {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    font-size: 20px;
+    max-width: 200px;
+    min-width: 100px;
+    width: 5%;
+    padding: 10px 0px;
+    color: white;
+    background-color: #282828;
+}
