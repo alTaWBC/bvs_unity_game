@@ -54,10 +54,10 @@ class Game extends Component {
         return response.toLowerCase() === "true";
     };
 
-    getSize = (isNotMobile) => {
+    getSize = (isMobile = false) => {
         const aspectRatio = 1920 / 1080;
         let height = window.innerHeight;
-        if (isNotMobile) height -= 110;
+        if (!isMobile) height -= 110;
         let width = height * aspectRatio;
         if (width > window.innerWidth) {
             width = window.innerWidth;
@@ -68,9 +68,11 @@ class Game extends Component {
     };
 
     render() {
-        const sizes = this.getSize();
+        const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+
+        const sizes = this.getSize(isMobile);
         window.addEventListener("resize", () => {
-            const sizes = this.getSize();
+            const sizes = this.getSize(isMobile);
             const game = document.querySelector("#Game");
             if (!game) return;
             game.style.height = sizes.height;
