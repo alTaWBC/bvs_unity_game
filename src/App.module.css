@@ -2,7 +2,7 @@
     text-align: center;
     min-height: 100vh;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
     width: 100vw;
     align-items: center;
@@ -45,4 +45,9 @@ body {
     to {
         transform: rotate(360deg);
     }
+}
+
+.Mobile {
+    transform: rotate(90deg);
+    transform-origin: center center;
 }

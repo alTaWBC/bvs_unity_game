@@ -59,18 +59,22 @@ class App extends Component {
 
     render() {
         const page = this.getPage(this.state.page);
+        const mobile = /Mobi|Android/i.test(navigator.userAgent);
+
         return (
             <div className={styles.App}>
-                <Navbar
-                    logged={this.state.loggedIn}
-                    page={this.state.page}
-                    logout={this.logout}
-                    loggedIn={loggedInPages}
-                    loggedOut={loggedOutPages}
-                    changePage={this.changePage}
-                />
+                {mobile ? null : (
+                    <Navbar
+                        logged={this.state.loggedIn}
+                        page={this.state.page}
+                        logout={this.logout}
+                        loggedIn={loggedInPages}
+                        loggedOut={loggedOutPages}
+                        changePage={this.changePage}
+                    />
+                )}
                 {page}
-                <Footer />
+                {mobile ? null : <Footer />}
             </div>
         );
     }

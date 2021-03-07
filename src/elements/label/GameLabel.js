@@ -54,9 +54,13 @@ class GameLabel extends Component {
     };
 
     render() {
+        const labelClasses = [styles.GameLabel];
+        const mobileDevice = /Mobi|Android/i.test(navigator.userAgent);
+        if (mobileDevice) labelClasses.push(styles.MobileLabel);
+
         return (
             <div
-                className={styles.GameLabel}
+                className={labelClasses.join(" ")}
                 onDoubleClick={this.onDoubleClick}
                 onMouseDown={this.mouseDown}
                 onMouseUp={this.mouseUp}

@@ -61,9 +61,6 @@ class AudioRecorder extends Component {
     };
 
     render() {
-        const cantRecord = !this.props.canRecord;
-        if (cantRecord) this.stop();
-
         const buttonClasses = [styles.AudioRecorder];
         if (this.state.recording) buttonClasses.push(styles.Recording);
 

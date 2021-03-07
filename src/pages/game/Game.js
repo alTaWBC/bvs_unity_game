@@ -54,20 +54,21 @@ class Game extends Component {
         return response.toLowerCase() === "true";
     };
 
-    getSize = () => {
+    getSize = (isNotMobile) => {
         const aspectRatio = 1920 / 1080;
-        let height = window.innerHeight - 110;
+        let height = window.innerHeight;
+        if (isNotMobile) height -= 110;
         let width = height * aspectRatio;
         if (width > window.innerWidth) {
             width = window.innerWidth;
             height = width / aspectRatio;
         }
         return { height: `${height}px`, width: `${width}px` };
+        // return { height: `${window.innerWidth-20}px`, width: `${window.innerHeight-20}px` };
     };
 
     render() {
         const sizes = this.getSize();
-        const canRecord = this.state.label !== "";
         window.addEventListener("resize", () => {
             const sizes = this.getSize();
             const game = document.querySelector("#Game");
@@ -79,7 +80,7 @@ class Game extends Component {
             <div style={sizes} className={styles.Unity} id="Game">
                 <Unity unityContent={unityContent} />
                 <GameLabel />
-                {this.state.label ? <AudioRecorder canRecord={canRecord} progressGame={this.progressGame} /> : null}
+                {this.state.label ? <AudioRecorder progressGame={this.progressGame} /> : null}
             </div>
         );
     }
