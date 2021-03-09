@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styles from "./AudioRecorder.module.css";
 
-const TIME_INTERVAL = 3000;
+const TIME_INTERVAL = 500;
 let count = 0;
 
 class AudioRecorder extends Component {
