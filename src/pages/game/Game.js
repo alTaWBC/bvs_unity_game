@@ -5,9 +5,7 @@ import GameLabel from "../../elements/label/GameLabel";
 import AudioRecorder from "../../elements/recorder/AudioRecorder";
 
 const unityContent = new UnityContent("Build/webgl1/game.json", "Build/webgl1/UnityLoader.js");
-
-// TODO: Game Start and Game Over called several times
-const todo = null;
+const SERVER_URL = "https://biovisualspeech.eu.pythonanywhere.com";
 
 class Game extends Component {
     state = {
@@ -44,14 +42,41 @@ class Game extends Component {
     };
 
     progressGame = (response) => {
-        const productionWasCorrect = this.classifyProduction(response);
+        console.log(response);
+        const productionWasCorrect = this.classifyProduction(JSON.parse(response));
+        console.log(productionWasCorrect);
         if (productionWasCorrect) unityContent.send("Character", "moveCharacter", "True");
     };
 
     classifyProduction = (message) => {
-        const { gameId = -1, response = "false" } = JSON.parse(message);
+        const gameId = message["gameId"] || -1;
+        const response = message["response"] || false;
         if (parseInt(gameId) !== this.state.gameId) return false;
         return response.toLowerCase() === "true";
+    };
+
+    sendDataToServer = (data, timecode, count) => {
+        const formData = new FormData();
+        formData.append("file", data);
+        const length = data.length || data.size;
+        const id = localStorage.getItem("id");
+
+        return fetch(`${SERVER_URL}/postFileWebm/`, {
+            headers: {
+                name: `${id}${timecode}`,
+                segment: count,
+                id: id,
+                label: this.state.label,
+                gameId: this.state.gameId,
+                "Content-Length": length,
+                extension: "webm",
+                "Content-Range": "bytes " + 0 + "-" + length + "/" + length,
+                "Content-Transfer-Encoding": "binary",
+                "Accept-Ranges": "bytes",
+            },
+            method: "POST",
+            body: formData,
+        });
     };
 
     getSize = (isMobile = false) => {
@@ -82,7 +107,9 @@ class Game extends Component {
             <div style={sizes} className={styles.Unity} id="Game">
                 <Unity unityContent={unityContent} />
                 <GameLabel />
-                {this.state.label ? <AudioRecorder progressGame={this.progressGame} /> : null}
+                {this.state.label ? (
+                    <AudioRecorder progressGame={this.progressGame} sendDataToServer={this.sendDataToServer} />
+                ) : null}
             </div>
         );
     }

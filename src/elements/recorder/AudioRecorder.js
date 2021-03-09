@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import styles from "./AudioRecorder.module.css";
 
-const TIME_INTERVAL = 500;
+const TIME_INTERVAL = 3000;
+let count = 0;
 
 class AudioRecorder extends Component {
     state = {
@@ -23,22 +24,20 @@ class AudioRecorder extends Component {
         this.mediaRecorder.addEventListener("stop", this.onStop);
     };
 
-    onStart = ({ data }) => {
-        const response = {
-            gameId: 1,
-            response: "true",
-        };
-
-        this.props.progressGame(JSON.stringify(response));
+    onStart = async ({ data, timecode = Date.now() }) => {
+        this.processSoundData(data, timecode);
     };
 
-    onStop = ({ data }) => {
-        const response = {
-            gameId: 1,
-            response: "true",
-        };
+    onStop = ({ data, timecode = Date.now() }) => {
+        const dataIsEmpty = !data || !data.length;
+        if (dataIsEmpty) return;
+        this.processSoundData(data, timecode);
+    };
 
-        this.props.progressGame(JSON.stringify(response));
+    processSoundData = async (data, timecode) => {
+        const response = await this.props.sendDataToServer(data, timecode, count++);
+        const text = await response.text();
+        this.props.progressGame(text);
     };
 
     onClick = () => {
@@ -47,17 +46,26 @@ class AudioRecorder extends Component {
     };
 
     start = () => {
+        const MicrophonePermissionsWereNotGiven = this.mediaRecorder === undefined;
+        if (MicrophonePermissionsWereNotGiven) return;
+
+        const MicrophoneIsRecording = this.state.recording;
+        if (MicrophoneIsRecording) return;
+
+        count = 0;
         this.mediaRecorder.start(TIME_INTERVAL);
         this.setState({ recording: true });
     };
 
     stop = () => {
-        const microphoneIsNotRecording = this.mediaRecorder.state !== "recording";
+        const MicrophonePermissionsWereNotGiven = this.mediaRecorder === undefined;
+        if (MicrophonePermissionsWereNotGiven) return;
+
+        const microphoneIsNotRecording = !this.state.recording;
         if (microphoneIsNotRecording) return;
 
         this.mediaRecorder.stop();
         this.setState({ recording: false });
-        console.log("Stopped");
     };
 
     render() {
