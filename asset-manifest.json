@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/bvs_unity_game/static/css/main.9e7f12c9.chunk.css",
-    "main.js": "/bvs_unity_game/static/js/main.a864cb5e.chunk.js",
-    "main.js.map": "/bvs_unity_game/static/js/main.a864cb5e.chunk.js.map",
+    "main.js": "/bvs_unity_game/static/js/main.2c778545.chunk.js",
+    "main.js.map": "/bvs_unity_game/static/js/main.2c778545.chunk.js.map",
     "runtime-main.js": "/bvs_unity_game/static/js/runtime-main.3ecce24b.js",
     "runtime-main.js.map": "/bvs_unity_game/static/js/runtime-main.3ecce24b.js.map",
     "static/js/2.859fe720.chunk.js": "/bvs_unity_game/static/js/2.859fe720.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.3ecce24b.js",
     "static/js/2.859fe720.chunk.js",
     "static/css/main.9e7f12c9.chunk.css",
-    "static/js/main.a864cb5e.chunk.js"
+    "static/js/main.2c778545.chunk.js"
   ]
 }
