@@ -10,6 +10,10 @@ class Login extends Component {
         this.setState({ password });
     };
 
+    onKeyPress = ({ code }) => {
+        if (code === "Enter") this.props.login(this.state.password);
+    };
+
     render() {
         const formClasses = this.props.wrong ? [styles.Form, styles.Wrong].join(" ") : styles.Form;
         return (
@@ -19,7 +23,12 @@ class Login extends Component {
                     <div className={formClasses}>
                         <div className={styles.input}>
                             <label htmlFor="password">Password</label>
-                            <input type="password" id="password" onChange={this.onChangePassword} />
+                            <input
+                                onKeyPress={this.onKeyPress}
+                                type="password"
+                                id="password"
+                                onChange={this.onChangePassword}
+                            />
                         </div>
                         <p>Password Errada</p>
                         <button onClick={() => this.props.login(this.state.password)}>Submit</button>

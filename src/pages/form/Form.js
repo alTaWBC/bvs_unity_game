@@ -26,7 +26,7 @@ class Form extends Component {
         idade: "",
         estrangeiro: false,
         desvios: false,
-        genero: "",
+        genero: "female",
         nacionalidade: "",
         descricaoDesvios: "",
 
@@ -36,6 +36,10 @@ class Form extends Component {
         validNacionalidade: true,
         validDesvios: true,
     };
+
+    componentDidMount() {
+        document.addEventListener("keydown", this.onKeyPress);
+    }
 
     onChangeId = ({ target: { value: id } }) => {
         id.length > 6 || this.setState({ id });
@@ -67,7 +71,6 @@ class Form extends Component {
     };
 
     onChangeGenero = ({ target: { value: genero } }) => {
-        console.log(genero);
         this.setState({ genero });
     };
 
@@ -96,7 +99,9 @@ class Form extends Component {
             !this.state.estrangeiro || (this.state.nacionalidade && this.state.nacionalidade.length > 2);
         const validDesvios =
             !this.state.desvios || (this.state.descricaoDesvios && this.state.descricaoDesvios.length > 2);
+
         this.setState({ validId, validIdade, validGender, validNacionalidade, validDesvios });
+
         return [validId, validIdade, validGender, validNacionalidade, validDesvios].every((field) => field);
     };
 
@@ -123,6 +128,10 @@ class Form extends Component {
         }).then((response) => {
             this.clear();
         });
+    };
+
+    onKeyPress = ({ code }) => {
+        if (code === "Enter") this.onSubmit();
     };
 
     render() {

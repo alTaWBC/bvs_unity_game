@@ -7,7 +7,13 @@ const TextInput = (props) => {
     return (
         <div className={inputClasses.join(" ")}>
             <label htmlFor={props.id}>{props.name}</label>
-            <input type="text" id={props.id} name={props.id} value={props.value} onChange={props.onChange} />
+            <input
+                type="text"
+                id={props.id}
+                name={props.id}
+                value={props.value}
+                onChange={props.onChange}
+            />
             {props.equal ? (
                 <p>
                     {props.name} têm de ter exatamente {props.len} dígitos.
