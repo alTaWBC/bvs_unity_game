@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/bvs_unity_game/static/css/main.9e7f12c9.chunk.css",
+    "main.js": "/bvs_unity_game/static/js/main.a864cb5e.chunk.js",
+    "main.js.map": "/bvs_unity_game/static/js/main.a864cb5e.chunk.js.map",
+    "runtime-main.js": "/bvs_unity_game/static/js/runtime-main.3ecce24b.js",
+    "runtime-main.js.map": "/bvs_unity_game/static/js/runtime-main.3ecce24b.js.map",
+    "static/js/2.859fe720.chunk.js": "/bvs_unity_game/static/js/2.859fe720.chunk.js",
+    "static/js/2.859fe720.chunk.js.map": "/bvs_unity_game/static/js/2.859fe720.chunk.js.map",
+    "static/js/3.8d76f1d2.chunk.js": "/bvs_unity_game/static/js/3.8d76f1d2.chunk.js",
+    "static/js/3.8d76f1d2.chunk.js.map": "/bvs_unity_game/static/js/3.8d76f1d2.chunk.js.map",
+    "index.html": "/bvs_unity_game/index.html",
+    "static/css/main.9e7f12c9.chunk.css.map": "/bvs_unity_game/static/css/main.9e7f12c9.chunk.css.map",
+    "static/js/2.859fe720.chunk.js.LICENSE.txt": "/bvs_unity_game/static/js/2.859fe720.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3ecce24b.js",
+    "static/js/2.859fe720.chunk.js",
+    "static/css/main.9e7f12c9.chunk.css",
+    "static/js/main.a864cb5e.chunk.js"
+  ]
+}
