@@ -44,10 +44,11 @@
     width: 40px;
     padding-right: 5px;
     border-right: none;
-    transform: translateX(2px);
+    transform: translate(2px);
     border-radius: 5px;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    padding-left: 2px;
 }
 
 .inputDiv input {
