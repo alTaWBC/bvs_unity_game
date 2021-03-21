@@ -12,10 +12,11 @@
 }
 
 .TextInput input {
-    width: 100%;
+    width: calc(100% - 40px);
     height: 30px;
     border-radius: 5px;
     border: 1px solid #222;
+    display: inline-block;
 }
 
 .TextInput p {
@@ -25,4 +26,40 @@
 
 .TextInput.Wrong p {
     display: block;
+}
+
+.TextInput div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.inputDiv span {
+    display: inline-block;
+    border: 1px solid #222;
+    color: white;
+    background-color: #222;
+    height: 30px;
+    width: 40px;
+    padding-right: 5px;
+    border-right: none;
+    transform: translateX(2px);
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.inputDiv input {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.inputDiv input:focus {
+    box-shadow: none;
+}
+
+.inputDiv:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px white, 0 0 0 5px #282c34;
 }

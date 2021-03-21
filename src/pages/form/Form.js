@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styles from "./Form.module.css";
 import TextInput from "../../elements/text_input/TextInput";
 import NumberInput from "../../elements/number_input/NumberInput";
+import TimeInput from "../../elements/time_input/TimeInput";
 import Checkbox from "../../elements/checkbox/Checkbox";
 import Radio from "../../elements/radio/Radio";
 
@@ -130,6 +131,10 @@ class Form extends Component {
         });
     };
 
+    onChangeTime = (event) => {
+        console.log(event);
+    };
+
     onKeyPress = ({ code }) => {
         if (code === "Enter") this.onSubmit();
     };
@@ -141,12 +146,19 @@ class Form extends Component {
                     <h1>Identificação do Voluntário</h1>
                     <TextInput
                         name="Identificador"
+                        prefix="BVS-"
                         wrong={!this.state.validId}
                         id="IdCrianca"
                         len={6}
                         value={this.state.id}
                         onChange={this.onChangeId}
                         equal={true}
+                    />
+                    <TimeInput
+                        name="Tempo de Início da Sessão"
+                        id="TempoSessao"
+                        value={this.state.time}
+                        onChange={this.onChangeTime}
                     />
                     <NumberInput
                         name="Idade"
@@ -163,13 +175,6 @@ class Form extends Component {
                         checked={!this.state.estrangeiro}
                         onClick={this.onClickEstrangeiro}
                     />
-                    <Checkbox
-                        name="Desvios na fala?"
-                        id="desvios"
-                        checked={this.state.desvios}
-                        onClick={this.onClickDesvios}
-                    />
-                    <Radio onChange={this.onChangeGenero} options={radioOptions} name="Gender" text="Género" />
                     {this.state.estrangeiro ? (
                         <TextInput
                             name="Nacionalidade"
@@ -180,6 +185,12 @@ class Form extends Component {
                             len={2}
                         />
                     ) : null}
+                    <Checkbox
+                        name="Desvios na Fala?"
+                        id="desvios"
+                        checked={this.state.desvios}
+                        onClick={this.onClickDesvios}
+                    />
                     {this.state.desvios ? (
                         <TextInput
                             name="Desvios Na Fala"
@@ -190,6 +201,7 @@ class Form extends Component {
                             len={2}
                         />
                     ) : null}
+                    <Radio onChange={this.onChangeGenero} options={radioOptions} name="Gender" text="Género" />
                     <button onClick={this.onSubmit}>Enviar</button>
                 </div>
             </div>

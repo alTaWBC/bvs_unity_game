@@ -65,7 +65,7 @@ class GameLabel extends Component {
                 onMouseDown={this.mouseDown}
                 onMouseUp={this.mouseUp}
             >
-                {this.state.id}
+                BVS-  {this.state.id}
             </div>
         );
     }

@@ -11,6 +11,7 @@ class Game extends Component {
     state = {
         label: "",
         gameId: 0,
+        decibel: 0,
     };
 
     componentDidMount() {
@@ -40,6 +41,7 @@ class Game extends Component {
     changeLabel = (label = "") => {
         this.setState({ label });
     };
+
 
     progressGame = (response) => {
         console.log(response);
@@ -110,6 +112,7 @@ class Game extends Component {
                 {this.state.label ? (
                     <AudioRecorder progressGame={this.progressGame} sendDataToServer={this.sendDataToServer} />
                 ) : null}
+                <p>{this.state.decibel}</p>
             </div>
         );
     }
