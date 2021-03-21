@@ -25,9 +25,7 @@ class App extends Component {
                 return <Form />;
             case "Game":
             default:
-                // return <Game />;
-                // ! Change to game Again
-                return <Form />;
+                return <Game />;
         }
     };
 
