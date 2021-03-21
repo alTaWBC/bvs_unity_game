@@ -4,25 +4,13 @@ import styles from "./TextInput.module.css";
 const TextInput = (props) => {
     const inputClasses = [styles.TextInput];
     props.wrong && inputClasses.push(styles.Wrong);
-    const divReference = React.createRef();
-
-    const focus = () => {
-        divReference.current.focus();
-    };
 
     return (
         <div className={inputClasses.join(" ")}>
             <label htmlFor={props.id}>{props.name}</label>
-            <div className={styles.inputDiv} tabIndex={0} ref={divReference}>
+            <div className={styles.inputDiv} tabIndex={0}>
                 {props.prefix ? <span>{props.prefix}</span> : null}
-                <input
-                    type="text"
-                    onFocus={focus}
-                    id={props.id}
-                    name={props.id}
-                    value={props.value}
-                    onChange={props.onChange}
-                />
+                <input type="text" id={props.id} name={props.id} value={props.value} onChange={props.onChange} />
             </div>
             {props.equal ? (
                 <p>

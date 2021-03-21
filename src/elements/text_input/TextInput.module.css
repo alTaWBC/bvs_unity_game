@@ -55,12 +55,3 @@
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
 }
-
-.inputDiv input:focus {
-    box-shadow: none;
-}
-
-.inputDiv:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px white, 0 0 0 5px #282c34;
-}

@@ -60,7 +60,9 @@ class Form extends Component {
     getCurrentTime = (date) => {
         const hour = Intl.DateTimeFormat("pt", { hour: "numeric" }).format(date);
         const minute = Intl.DateTimeFormat("pt", { minute: "numeric" }).format(date);
-        return `${hour}:${minute}`;
+        const parsedHour = hour.length === 2 ? hour : `0${hour}`;
+        const parsedMinute = minute.length === 2 ? minute : `0${minute}`;
+        return `${parsedHour}:${parsedMinute}`;
     };
 
     onChangeId = ({ target: { value: id } }) => {
@@ -74,7 +76,7 @@ class Form extends Component {
             idade: "",
             estrangeiro: false,
             desvios: false,
-            genero: "",
+            genero: "female",
             nacionalidade: "",
             descricaoDesvios: "",
             date: this.getCurrentDate(currentDate),
@@ -148,9 +150,11 @@ class Form extends Component {
                 portuguesLinguaMae: nacionalidade,
                 genero: genero,
                 desvios: descricaoDesvios,
+                data: this.state.date,
+                time: this.state.time,
             },
             method: "Post",
-        }).then((response) => {
+        }).then((_) => {
             this.clear();
         });
     };
