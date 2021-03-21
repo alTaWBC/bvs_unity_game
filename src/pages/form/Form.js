@@ -22,31 +22,53 @@ const radioOptions = [
 ];
 
 class Form extends Component {
-    state = {
-        id: "",
-        idade: "",
-        estrangeiro: false,
-        desvios: false,
-        genero: "female",
-        nacionalidade: "",
-        descricaoDesvios: "",
+    constructor() {
+        super();
+        const currentDate = Date.now();
+        this.state = {
+            id: "",
+            idade: "",
+            estrangeiro: false,
+            desvios: false,
+            genero: "female",
+            nacionalidade: "",
+            descricaoDesvios: "",
+            date: this.getCurrentDate(currentDate),
+            time: this.getCurrentTime(currentDate),
 
-        validId: true,
-        validIdade: true,
-        validGender: true,
-        validNacionalidade: true,
-        validDesvios: true,
-    };
+            validId: true,
+            validIdade: true,
+            validGender: true,
+            validNacionalidade: true,
+            validDesvios: true,
+        };
+    }
 
     componentDidMount() {
         document.addEventListener("keydown", this.onKeyPress);
     }
+
+    getCurrentDate = (date) => {
+        const year = Intl.DateTimeFormat("pt", { year: "numeric" }).format(date);
+        const month = Intl.DateTimeFormat("pt", { month: "numeric" }).format(date);
+        const day = Intl.DateTimeFormat("pt", { day: "numeric" }).format(date);
+        const parsedMonth = month.length === 2 ? month : `0${month}`;
+        const parsedDay = day.length === 2 ? day : `0${day}`;
+        return `${year}-${parsedMonth}-${parsedDay}`;
+    };
+
+    getCurrentTime = (date) => {
+        const hour = Intl.DateTimeFormat("pt", { hour: "numeric" }).format(date);
+        const minute = Intl.DateTimeFormat("pt", { minute: "numeric" }).format(date);
+        return `${hour}:${minute}`;
+    };
 
     onChangeId = ({ target: { value: id } }) => {
         id.length > 6 || this.setState({ id });
     };
 
     clear = () => {
+        const currentDate = Date.now();
         this.setState({
             id: "",
             idade: "",
@@ -55,6 +77,8 @@ class Form extends Component {
             genero: "",
             nacionalidade: "",
             descricaoDesvios: "",
+            date: this.getCurrentDate(currentDate),
+            time: this.getCurrentTime(currentDate),
 
             validId: true,
             validIdade: true,
@@ -131,8 +155,12 @@ class Form extends Component {
         });
     };
 
-    onChangeTime = (event) => {
-        console.log(event);
+    onChangeDate = ({ target: { value: date } }) => {
+        this.setState({ date });
+    };
+
+    onChangeTime = ({ target: { value: time } }) => {
+        this.setState({ time });
     };
 
     onKeyPress = ({ code }) => {
@@ -157,8 +185,10 @@ class Form extends Component {
                     <TimeInput
                         name="Tempo de Início da Sessão"
                         id="TempoSessao"
-                        value={this.state.time}
-                        onChange={this.onChangeTime}
+                        valueDate={this.state.date}
+                        onChangeDate={this.onChangeDate}
+                        valueTime={this.state.time}
+                        onChangeTime={this.onChangeTime}
                     />
                     <NumberInput
                         name="Idade"
