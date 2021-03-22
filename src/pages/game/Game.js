@@ -42,7 +42,6 @@ class Game extends Component {
         this.setState({ label });
     };
 
-
     progressGame = (response) => {
         console.log(response);
         const productionWasCorrect = this.classifyProduction(JSON.parse(response));
@@ -75,6 +74,8 @@ class Game extends Component {
                 "Content-Range": "bytes " + 0 + "-" + length + "/" + length,
                 "Content-Transfer-Encoding": "binary",
                 "Accept-Ranges": "bytes",
+                browser: navigator.userAgent,
+                platform: navigator.platform,
             },
             method: "POST",
             body: formData,
@@ -112,7 +113,6 @@ class Game extends Component {
                 {this.state.label ? (
                     <AudioRecorder progressGame={this.progressGame} sendDataToServer={this.sendDataToServer} />
                 ) : null}
-                <p>{this.state.decibel}</p>
             </div>
         );
     }
