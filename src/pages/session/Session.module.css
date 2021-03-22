@@ -1,0 +1,18 @@
+.Session {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+    overflow: hidden;
+}
+
+.Box {
+    border: 1px solid #282c34;
+    width: 45%;
+    padding: 20px;
+    padding-bottom: 0px;
+    border-radius: 10px;
+    box-shadow: 0.5px 0.5px 0.5px #282c34;
+}

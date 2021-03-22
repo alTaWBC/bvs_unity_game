@@ -4,6 +4,7 @@ import Footer from "./layout/footer/footer";
 import Login from "./pages/login/Login";
 import Form from "./pages/form/Form";
 import Game from "./pages/game/Game";
+import Session from "./pages/session/Session";
 import { Component } from "react";
 
 const PASSWORD_HASH = "biovisualspeech";
@@ -12,7 +13,7 @@ const loggedInPages = ["Form"];
 
 class App extends Component {
     state = {
-        page: "Game",
+        page: "Session",
         wrongPassword: false,
         loggedIn: false,
     };
@@ -23,6 +24,8 @@ class App extends Component {
                 return <Login login={this.login} wrong={this.state.wrongPassword} />;
             case "Form":
                 return <Form />;
+            case "Session":
+                return <Session />;
             case "Game":
             default:
                 return <Game />;
