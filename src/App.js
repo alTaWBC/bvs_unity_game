@@ -8,8 +8,8 @@ import Session from "./pages/session/Session";
 import { Component } from "react";
 
 const PASSWORD_HASH = "biovisualspeech";
-const loggedOutPages = ["Game"];
-const loggedInPages = ["Form"];
+const loggedOutPages = ["Jogo"];
+const loggedInPages = ["Form", "Sessão"];
 
 class App extends Component {
     state = {
@@ -24,9 +24,9 @@ class App extends Component {
                 return <Login login={this.login} wrong={this.state.wrongPassword} />;
             case "Form":
                 return <Form />;
-            case "Session":
+            case "Sessão":
                 return <Session />;
-            case "Game":
+            case "Jogo":
             default:
                 return <Game />;
         }

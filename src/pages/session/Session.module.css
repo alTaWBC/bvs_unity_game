@@ -1,4 +1,4 @@
-.Session {
+.Sessions {
     display: flex;
     width: 100%;
     flex-direction: column;
@@ -15,4 +15,47 @@
     padding-bottom: 0px;
     border-radius: 10px;
     box-shadow: 0.5px 0.5px 0.5px #282c34;
+}
+
+.Box h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #282c34;
+}
+
+.Session {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Session div label {
+    padding-right: 10px;
+}
+
+.Session + button,
+.Box button {
+    border: none;
+    background-color: #282c34;
+    border-radius: 5px;
+    width: 100%;
+    min-height: 30px;
+    color: white;
+    margin: 10px 0;
+}
+
+.spacer {
+    margin-bottom: 40px;
+}
+
+.headers {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headers span {
+    padding: 0 10%;
+}
+
+.headers span:nth-child(2) {
+    flex: 2;
 }
