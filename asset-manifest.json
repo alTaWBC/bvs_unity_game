@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/bvs_unity_game/static/css/main.c00d6339.chunk.css",
-    "main.js": "/bvs_unity_game/static/js/main.65f5b5a1.chunk.js",
-    "main.js.map": "/bvs_unity_game/static/js/main.65f5b5a1.chunk.js.map",
-    "runtime-main.js": "/bvs_unity_game/static/js/runtime-main.51a7731a.js",
-    "runtime-main.js.map": "/bvs_unity_game/static/js/runtime-main.51a7731a.js.map",
-    "static/js/2.f06cfaa7.chunk.js": "/bvs_unity_game/static/js/2.f06cfaa7.chunk.js",
-    "static/js/2.f06cfaa7.chunk.js.map": "/bvs_unity_game/static/js/2.f06cfaa7.chunk.js.map",
-    "static/js/3.9e4f48dc.chunk.js": "/bvs_unity_game/static/js/3.9e4f48dc.chunk.js",
-    "static/js/3.9e4f48dc.chunk.js.map": "/bvs_unity_game/static/js/3.9e4f48dc.chunk.js.map",
+    "main.css": "/bvs_unity_game/static/css/main.b913b4cc.chunk.css",
+    "main.js": "/bvs_unity_game/static/js/main.dcb6b704.chunk.js",
+    "main.js.map": "/bvs_unity_game/static/js/main.dcb6b704.chunk.js.map",
+    "runtime-main.js": "/bvs_unity_game/static/js/runtime-main.3a71b0f5.js",
+    "runtime-main.js.map": "/bvs_unity_game/static/js/runtime-main.3a71b0f5.js.map",
+    "static/js/2.fab5427b.chunk.js": "/bvs_unity_game/static/js/2.fab5427b.chunk.js",
+    "static/js/2.fab5427b.chunk.js.map": "/bvs_unity_game/static/js/2.fab5427b.chunk.js.map",
+    "static/js/3.c460e016.chunk.js": "/bvs_unity_game/static/js/3.c460e016.chunk.js",
+    "static/js/3.c460e016.chunk.js.map": "/bvs_unity_game/static/js/3.c460e016.chunk.js.map",
     "index.html": "/bvs_unity_game/index.html",
-    "static/css/main.c00d6339.chunk.css.map": "/bvs_unity_game/static/css/main.c00d6339.chunk.css.map",
-    "static/js/2.f06cfaa7.chunk.js.LICENSE.txt": "/bvs_unity_game/static/js/2.f06cfaa7.chunk.js.LICENSE.txt"
+    "static/css/main.b913b4cc.chunk.css.map": "/bvs_unity_game/static/css/main.b913b4cc.chunk.css.map",
+    "static/js/2.fab5427b.chunk.js.LICENSE.txt": "/bvs_unity_game/static/js/2.fab5427b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.51a7731a.js",
-    "static/js/2.f06cfaa7.chunk.js",
-    "static/css/main.c00d6339.chunk.css",
-    "static/js/main.65f5b5a1.chunk.js"
+    "static/js/runtime-main.3a71b0f5.js",
+    "static/js/2.fab5427b.chunk.js",
+    "static/css/main.b913b4cc.chunk.css",
+    "static/js/main.dcb6b704.chunk.js"
   ]
 }
