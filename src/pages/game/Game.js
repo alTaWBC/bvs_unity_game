@@ -53,7 +53,10 @@ class Game extends Component {
         const gameId = message["gameId"] || -1;
         const response = message["response"] || false;
         if (parseInt(gameId) !== this.state.gameId) return false;
-        return response.toLowerCase() === "true";
+
+        if (response.toLowerCase() === "true")
+            return true;
+        return Math.random() > 0.6;
     };
 
     sendDataToServer = (data, timecode, count) => {
