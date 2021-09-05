@@ -5,7 +5,7 @@ import GameLabel from "../../elements/label/GameLabel";
 import AudioRecorder from "../../elements/recorder/AudioRecorder";
 
 const unityContent = new UnityContent("Build/webgl1/game.json", "Build/webgl1/UnityLoader.js");
-const SERVER_URL = "https://biovisualspeech.eu.pythonanywhere.com";
+const SERVER_URL = "https://JogosBioVisualSpeech.eu.pythonanywhere.com";
 
 class Game extends Component {
     state = {
