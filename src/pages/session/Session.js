@@ -32,7 +32,7 @@ class Session extends Component {
         const formIsInvalid = !this.checkValidity();
         if (formIsInvalid) return;
 
-        fetch("https://biovisualspeech.eu.pythonanywhere.com/evaluateSession/", {
+        fetch("https://JogosBioVisualSpeech.eu.pythonanywhere.com/evaluateSession/", {
             headers: {
                 id: this.state.id,
                 s1: this.state.evaluations[0],

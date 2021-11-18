@@ -43,7 +43,6 @@ class Game extends Component {
     };
 
     progressGame = (response) => {
-        console.log(response);
         const productionWasCorrect = this.classifyProduction(JSON.parse(response));
         console.log(productionWasCorrect);
         if (productionWasCorrect) unityContent.send("Character", "moveCharacter", "True");

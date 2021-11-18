@@ -142,7 +142,7 @@ class Form extends Component {
         const nacionalidade = this.state.estrangeiro ? this.state.nacionalidade : "portuguesa";
         const descricaoDesvios = this.state.desvios ? this.state.descricaoDesvios : "";
 
-        fetch("https://biovisualspeech.eu.pythonanywhere.com/newProfile/", {
+        fetch("https://JogosBioVisualSpeech.eu.pythonanywhere.com/newProfile/", {
             headers: {
                 idTerapeuta: "template",
                 idCrianca: id,
